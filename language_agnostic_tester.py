@@ -1,4 +1,5 @@
-#! /usr/bin/env python2
+#! /usr/bin/env python
+from __future__ import print_function
 import sys, json, re, os
 from subprocess import Popen, PIPE, STDOUT
 
@@ -30,19 +31,19 @@ for fixture in fixtures.split('r"""'):
             py_expect = json.loads(expect)
         except:
             summary += 'J'
-            print (' %d: BAD JSON ' % index).center(79, '=')
-            print 'result>', result
-            print 'expect>', expect
+            print((' %d: BAD JSON ' % index).center(79, '='))
+            print('result>', result)
+            print('expect>', expect)
             continue
         if py_result == py_expect:
             summary += '.'
         else:
-            print (' %d: FAILED ' % index).center(79, '=')
-            print 'r"""%s"""' % doc
-            print '$ prog %s\n' % argv
-            print 'result>', result
-            print 'expect>', expect
+            print((' %d: FAILED ' % index).center(79, '='))
+            print('r"""%s"""' % doc)
+            print('$ prog %s\n' % argv)
+            print('result>', result)
+            print('expect>', expect)
             summary += 'F'
 
-print (' %d / %d ' % (summary.count('.'), len(summary))).center(79, '=')
-print summary
+print((' %d / %d ' % (summary.count('.'), len(summary))).center(79, '='))
+print(summary)
